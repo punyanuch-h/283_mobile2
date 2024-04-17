@@ -82,7 +82,7 @@ class TicketPage extends StatelessWidget {
                                 ),
                                 SizedBox(width: 5),
                                 Text(
-                                  "Premium statusssssssss",
+                                  "Premium status",
                                   style: TextStyle(
                                     color: const Color(0xFF3DAAAA),
                                     fontWeight: FontWeight.w600,
