@@ -3,6 +3,7 @@ import 'package:phrase2/screens/homepage.dart'; // Homepage
 import 'package:phrase2/screens/homepage2.dart'; // Homepage2
 import 'package:phrase2/screens/discovery.dart'; // DiscoveryPage
 import 'package:phrase2/screens/detailKhlong.dart';
+import 'package:phrase2/screens/homepage3.dart';
 import 'package:phrase2/screens/ticket_page.dart';
 import 'package:phrase2/screens/welcome.dart'; // DetailsPage
 import 'package:phrase2/screens/profile.dart'; //Profilepage
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       // home: const DetailsPage(image: 'assets/images/city1.jpg',),
-      home:const TicketPage(),
+      home: Homepage3(),
     );
   }
 }
