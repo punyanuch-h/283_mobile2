@@ -1,13 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
+  LoginPage({Key? key}) : super(key: key);
+
   @override
-  State<LoginPage> createState() => _LoginPage();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPage extends State<LoginPage> {
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  // Sign user in method
+  void signInUser() async {
+    // Show loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+    // Try sign in
+    try {
+      
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email');
+      } else if(e.code == 'wrong-password') {
+        print('Wrong password provided for that user');
+      }
+    }
+
+    // Pop the loading circle
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +53,17 @@ class _LoginPage extends State<LoginPage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromARGB(255, 220, 187, 125), // สีแรก (ข้างบน)
-              Color.fromRGBO(204, 235, 240, 1), // สีที่สอง (ข้างล่าง)
+              Color.fromARGB(255, 220, 187, 125), // Color 1 (Top)
+              Color.fromRGBO(204, 235, 240, 1), // Color 2 (Bottom)
             ],
           ),
         ),
-        child: _Page(),
+        child: _buildPage(),
       ),
     );
   }
 
-  Widget _Page() {
+  Widget _buildPage() {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Center(
@@ -40,13 +74,17 @@ class _LoginPage extends State<LoginPage> {
               "Welcome",
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 24, color: const Color.fromARGB(255, 53, 53, 53)),
+                fontSize: 24,
+                color: const Color.fromARGB(255, 53, 53, 53),
+              ),
             ),
             Text(
               "Good to see you back",
               textAlign: TextAlign.center,
               style: TextStyle(
-                  fontSize: 24, color: const Color.fromARGB(255, 62, 60, 60)),
+                fontSize: 24,
+                color: const Color.fromARGB(255, 62, 60, 60),
+              ),
             ),
             const SizedBox(height: 20),
             Row(
@@ -54,14 +92,12 @@ class _LoginPage extends State<LoginPage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Your Sign In Button Logic
-                    print("Sign In button pressed");
+                    signInUser();
                   },
                   child: Text("Sign In"),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      Colors.transparent,
-                    ),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.transparent),
                     elevation: MaterialStateProperty.all<double>(0),
                   ),
                 ),
@@ -73,16 +109,15 @@ class _LoginPage extends State<LoginPage> {
                   },
                   child: Text("Sign Up"),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      Colors.transparent,
-                    ),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.transparent),
                     elevation: MaterialStateProperty.all<double>(0),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 20),
-            _inputField("E-mail", usernameController),
+            _inputField("E-mail", emailController),
             const SizedBox(height: 20),
             Row(
               children: [
@@ -126,15 +161,14 @@ class _LoginPage extends State<LoginPage> {
           ),
           obscureText: isPassword,
         ),
-        SizedBox(
-            height: 10), // เพิ่มช่องว่างระหว่าง TextField กับ Forgot Password
-        if (isPassword) // เพิ่มเงื่อนไขเพื่อแสดง "Forgot Password" เฉพาะเมื่อเป็นช่องใส่รหัสผ่าน
+        SizedBox(height: 10), // Add space between TextField and Forgot Password
+        if (isPassword)
           Row(
-            mainAxisAlignment: MainAxisAlignment.end, // จัดวางให้อยู่ทางขวา
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               GestureDetector(
                 onTap: () {
-                  // ใส่โค้ดสำหรับลืมรหัสผ่านตรงนี้
+                  // Forgot Password Logic
                   print("Forgot Password tapped");
                 },
                 child: Text(
@@ -154,10 +188,9 @@ class _LoginPage extends State<LoginPage> {
   Widget _loginBtn() {
     return ElevatedButton(
       onPressed: () {
-        debugPrint("Username: " + usernameController.text);
-        debugPrint("Password: " + passwordController.text);
+        signInUser();
       },
-      child: const SizedBox(
+      child: SizedBox(
         width: double.infinity,
         child: Text(
           "Sign in",

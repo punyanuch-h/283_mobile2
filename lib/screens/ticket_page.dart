@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:phrase2/screens/discovery.dart';
+import 'package:phrase2/screens/profile.dart';
+import 'package:phrase2/screens/detailKhlong.dart';
+import 'package:phrase2/screens/ticket_page.dart';
+
 
 class TicketPage extends StatelessWidget {
   const TicketPage({Key? key}) : super(key: key);

@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:phrase2/widgets/custom_icon_button.dart';
@@ -5,6 +6,11 @@ import 'package:phrase2/widgets/location_card.dart';
 import 'package:phrase2/widgets/nearby_places.dart';
 import 'package:phrase2/widgets/recommended_places.dart';
 import 'package:phrase2/widgets/tourist_places.dart';
+import 'package:phrase2/screens/discovery.dart';
+import 'package:phrase2/screens/profile.dart';
+import 'package:phrase2/screens/detailKhlong.dart';
+import 'package:phrase2/screens/ticket_page.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class DiscoveryPage extends StatelessWidget {
   const DiscoveryPage({Key? key}) : super(key: key);
@@ -17,22 +23,23 @@ class DiscoveryPage extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(14),
         children: [
-          // LOCATION CARD
           const LocationCard(),
           const SizedBox(
             height: 15,
           ),
           const TouristPlaces(),
-          // CATEGORIES
           const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Recommendation",
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.headline6,
               ),
-              TextButton(onPressed: () {}, child: const Text("View All"))
+              TextButton(
+                onPressed: () {},
+                child: const Text("View All"),
+              ),
             ],
           ),
           const SizedBox(height: 10),
@@ -43,38 +50,19 @@ class DiscoveryPage extends StatelessWidget {
             children: [
               Text(
                 "Nearby From You",
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.headline6,
               ),
-              TextButton(onPressed: () {}, child: const Text("View All"))
+              TextButton(
+                onPressed: () {},
+                child: const Text("View All"),
+              ),
             ],
           ),
           const SizedBox(height: 10),
           const NearbyPlaces(),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.home_outline),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.bookmark_outline),
-            label: "Bookmark",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.ticket_outline),
-            label: "Ticket",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Ionicons.person_outline),
-            label: "Profile",
-          )
-        ],
-      ),
+      bottomNavigationBar: BottomBar(),
     );
   }
 
@@ -83,30 +71,33 @@ class DiscoveryPage extends StatelessWidget {
       elevation: 0,
       backgroundColor: Colors.transparent,
       foregroundColor: Colors.black,
-      title: 
-        Row(
-          children: [
-            CircleAvatar(
-              radius: 25,
-              backgroundImage: AssetImage("assets/images/profile.jpg"),
-            ),
-            SizedBox(
-              width: 15,
-            ),
-            RichText(text: TextSpan(text: "Ahoy! Captain",style: TextStyle(color: Colors.black, fontSize: 16))),
-            SizedBox(
-              width: 8,
-            ),
-            RichText(text: TextSpan(style: TextStyle(color: Colors.black, fontSize: 24), children: [
+      title: Row(
+        children: [
+          CircleAvatar(
+            radius: 25,
+            backgroundImage: AssetImage("assets/images/profile.jpg"),
+          ),
+          SizedBox(
+            width: 15,
+          ),
+          RichText(
+            text: TextSpan(
+              text: "Ahoy! Captain ",
+              style: TextStyle(color: Colors.black, fontSize: 16),
+              children: [
                 TextSpan(
                   text: "Jenny Wilson",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                  )
-                )
-              ]))
-            ]),          
-      actions: const [
+                    fontSize: 24,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      actions: [
         CustomIconButton(
           icon: Icon(Ionicons.search_outline),
         ),
@@ -117,6 +108,39 @@ class DiscoveryPage extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class BottomBar extends StatefulWidget {
+  const BottomBar({Key? key}) : super(key: key);
+
+  @override
+  State<BottomBar> createState() => _BottomBarState();
+}
+
+class _BottomBarState extends State<BottomBar> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CurvedNavigationBar(
+      backgroundColor: Color.fromRGBO(204, 235, 240, 1),
+      color: Color.fromARGB(255, 88, 139, 138),
+      animationDuration: const Duration(milliseconds: 300),
+      items: const <Widget>[
+        Icon(Icons.search, size: 26, color: Colors.white),
+        Icon(Icons.home, size: 26, color: Colors.white),
+        Icon(Icons.person, size: 26, color: Colors.white),
+        Icon(Icons.confirmation_number, size: 26, color: Colors.white),
+      ],
+      onTap: _onItemTapped,
     );
   }
 }
