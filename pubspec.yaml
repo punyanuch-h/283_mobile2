@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   ionicons: ^0.2.2
-  google_maps_flutter: ^2.6.0
+  google_maps_flutter: ^2.6.1
   # ionicons:
   #   git:
   #     url: git@github.com:ez-connect/flutter-ionicons.git

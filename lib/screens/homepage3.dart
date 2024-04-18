@@ -1,46 +1,45 @@
-// import 'package:flutter/material.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
-// import 'package:flutter/services.dart'; // Import for logging
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-// class Homepage2 extends StatefulWidget {
-//   const Homepage2({super.key});
+class Homepage3 extends StatefulWidget {
+  @override
+  _Homepage3State createState() => _Homepage3State();
+}
 
-//   @override
-//   State<Homepage2> createState() => _HomepageState();
-// }
+class _Homepage3State extends State<Homepage3> {
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(13.732252, 100.493111),
+    zoom: 14.4746,
+  );
 
-// class _HomepageState extends State<Homepage2> {
-//   static const LatLng _pGooglePlex = LatLng(13.8140, 100.0373); // Nakhon Pathom
+  Set<Marker> _markers = {};
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Column(
-//         children: [
-//           try {
-//             GoogleMap(
-//               initialCameraPosition: CameraPosition(
-//                 target: _pGooglePlex,
-//                 zoom: 13,
-//               ),
-//               onMapCreated: (GoogleMapController controller) {
-//                 // Handle map controller events
-//               },
-//             );
-//           } on PlatformException catch (e) {
-//             logMessage('Failed to create GoogleMap: ${e.message}');
-//           }
-//           logMessage('GoogleMap created successfully');
-//           Icon(
-//             Icons.home, // ใช้ icon บ้าน
-//             color: Colors.red, 
-//           ),
-//         ],
-//       ),
-//     );
-//   }
+  void _addMarker(LatLng position) {
+    // This function will be used later to add new markers on map tap
+    setState(() {
+      _markers.add(Marker(
+        markerId: MarkerId(position.toString()),
+        position: position,
+      ));
+    });
+  }
 
-//   void logMessage(String message) {
-//     print('GoogleMap: $message');
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Google Map'),
+      ),
+      body: GoogleMap(
+        initialCameraPosition: _kGooglePlex,
+        markers: _markers,
+        onTap: _addMarker, // Add marker on map tap
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: const Text('Search Location'),
+        icon: const Icon(Icons.search),
+      ),
+    );
+  }
+}
