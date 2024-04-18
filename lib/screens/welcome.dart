@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phrase2/screens/login_page.dart'; // นำเข้าหน้า login_page.dart
 
-class welcome extends StatelessWidget {
+class welcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(

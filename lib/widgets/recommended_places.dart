@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:phrase2/models/recommended_places_model.dart';
-import 'package:phrase2/screens/de1.dart';
+import 'package:phrase2/models/recommended_places_model.dart'; // เรียกใช้ไฟล์ฐานข้อมูล
 
 class RecommendedPlaces extends StatelessWidget {
   const RecommendedPlaces({Key? key}) : super(key: key);
@@ -11,94 +10,87 @@ class RecommendedPlaces extends StatelessWidget {
     return SizedBox(
       height: 235,
       child: ListView.separated(
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            return SizedBox(
-              width: 220,
-              child: Card(
-                elevation: 0.4,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(12),
-                  ),
+        physics: const BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        itemCount: recommendedPlaces.length, // ใช้ความยาวของฐานข้อมูลเป็นจำนวนรายการ
+        itemBuilder: (context, index) {
+          final place = recommendedPlaces[index]; // เรียกใช้ข้อมูลแต่ละสถานที่จาก index
+          return SizedBox(
+            width: 320,
+            child: Card(
+              elevation: 0.4,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(12),
                 ),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(12),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailPage(
-                            image: recommendedPlaces[index].image,
-                          ),
-                        ));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            recommendedPlaces[index].image,
-                            width: double.maxFinite,
-                            fit: BoxFit.cover,
-                            height: 150,
-                          ),
+              ),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(12),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(
+                          place.image, // image
+                          width: double.maxFinite,
+                          fit: BoxFit.cover,
+                          height: 150,
                         ),
-                        const SizedBox(height: 5),
-                        Row(
-                          children: [
-                            const Text(
-                              "St Regis Bora Bora",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      ),
+                      const SizedBox(height: 5),
+                      Row(
+                        children: [
+                          Text(
+                            place.location, // location
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
                             ),
-                            const Spacer(),
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellow.shade700,
-                              size: 14,
+                          ),
+                          const Spacer(),
+                          Icon(
+                            Icons.star,
+                            color: Colors.yellow.shade700,
+                            size: 14,
+                          ),
+                          Text(
+                            place.rating.toString(), // rating
+                            style: TextStyle(
+                              fontSize: 12,
                             ),
-                            const Text(
-                              "4.4",
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-                            )
-                          ],
-                        ),
-                        const SizedBox(height: 5),
-                        Row(
-                          children: [
-                            Icon(
-                              Ionicons.location,
-                              color: Theme.of(context).primaryColor,
-                              size: 16,
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      Row(
+                        children: [
+                          Icon(
+                            Ionicons.location,
+                            color: Theme.of(context).primaryColor,
+                            size: 16,
+                          ),
+                          const SizedBox(width: 5),
+                          Text(
+                            place.text, // text
+                            style: TextStyle(
+                              fontSize: 12,
                             ),
-                            const SizedBox(width: 5),
-                            const Text(
-                              "French Polynesia",
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
+                          )
+                        ],
+                      )
+                    ],
                   ),
                 ),
               ),
-            );
-          },
-          separatorBuilder: (context, index) => const Padding(
-                padding: EdgeInsets.only(right: 10),
-              ),
-          itemCount: recommendedPlaces.length),
+            ),
+          );
+        },
+        separatorBuilder: (context, index) => const Padding(
+          padding: EdgeInsets.only(right: 10),
+        ),
+      ),
     );
   }
 }

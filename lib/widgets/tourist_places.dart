@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phrase2/models/tourist_places_model.dart';
+// for discovery Hit location bar
 
 class TouristPlaces extends StatelessWidget {
   const TouristPlaces({Key? key}) : super(key: key);

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:phrase2/models/nearby_places_model.dart';
-import 'package:phrase2/screens/de1.dart';
 import 'package:phrase2/widgets/distance.dart';
 
 class NearbyPlaces extends StatelessWidget {
@@ -22,80 +21,23 @@ class NearbyPlaces extends StatelessWidget {
               ),
               child: InkWell(
                 borderRadius: BorderRadius.circular(12),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetailPage(
-                          image: nearbyPlaces[index].image,
-                        ),
-                      ));
-                },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.asset(
-                          nearbyPlaces[index].image,
-                          height: double.maxFinite,
-                          width: 130,
-                          fit: BoxFit.cover,
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.asset(
+                              nearbyPlaces[index].image,
+                              width: 200, // กำหนดความกว้างของรูปภาพ
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                       ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Sea of Peace",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const Text("Portic Team"),
-                            const SizedBox(height: 10),
-                            // DISTANCE WIDGET
-                            const Distance(),
-                            const Spacer(),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.star,
-                                  color: Colors.yellow.shade700,
-                                  size: 14,
-                                ),
-                                const Text(
-                                  "4.5",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                const Spacer(),
-                                RichText(
-                                  text: TextSpan(
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: Theme.of(context).primaryColor,
-                                      ),
-                                      text: "\$22",
-                                      children: const [
-                                        TextSpan(
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.black54,
-                                            ),
-                                            text: "/ Person")
-                                      ]),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      )
                     ],
                   ),
                 ),

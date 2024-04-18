@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:phrase2/models/setting.dart';
 import 'package:phrase2/screens/discovery.dart';
 import 'package:phrase2/screens/profile.dart';
 import 'package:phrase2/screens/ticket_page.dart';
@@ -75,17 +76,16 @@ class _HomepageState extends State<Homepage> {
               ),
               MarkerLayer(
                 markers: [
-           Marker(
-  point: center,
-  width: 40.0,
-  height: 40.0,
-  child: Icon(
-    Icons.houseboat_rounded,
-    color: Colors.red.shade800,
-    size: 50.0,
-  ),
-),
-
+                  Marker(
+                    point: center,
+                    width: 40.0,
+                    height: 40.0,
+                    child: Icon(
+                      Icons.houseboat_rounded,
+                      color: Colors.red.shade800,
+                      size: 50.0,
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -113,7 +113,7 @@ class _HomepageState extends State<Homepage> {
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => SettingsScreen()),
+          MaterialPageRoute(builder: (context) => SettingTile(setting: settings[index],)),
         );
         break;
       case 3:

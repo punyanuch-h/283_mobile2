@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:phrase2/screens/welcome.dart';
+import 'package:phrase2/utilities/colors.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -70,19 +72,32 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Welcome",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24,
-                color: const Color.fromARGB(255, 53, 53, 53),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Welcome",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontWeight: FontWeight.w600,
+                    color: const Color.fromARGB(255, 53, 53, 53),
+                  ),
+                ),
+                SizedBox(width: 10),
+                Icon(
+                  Icons.waving_hand,
+                  color: Colors.amber,
+                  size: 40,
+                )
+              ],
             ),
             Text(
               "Good to see you back",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
                 color: const Color.fromARGB(255, 62, 60, 60),
               ),
             ),
@@ -94,7 +109,17 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     signInUser();
                   },
-                  child: Text("Sign In"),
+                  child: Text(
+                    "Sign In", 
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                      decoration: TextDecoration.underline, // เพิ่มเส้น
+                      decorationColor: darkest_blue, 
+                      decorationThickness: 6,
+                    ),
+                    ),
                   style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.transparent),
@@ -103,11 +128,15 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(width: 50),
                 ElevatedButton(
-                  onPressed: () {
-                    // Your Sign Up Button Logic
-                    print("Sign Up button pressed");
-                  },
-                  child: Text("Sign Up"),
+                  onPressed: () {},
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                    ),
+                  ),
                   style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.transparent),
@@ -186,27 +215,33 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _loginBtn() {
-    return ElevatedButton(
-      onPressed: () {
-        signInUser();
-      },
-      child: SizedBox(
-        width: double.infinity,
-        child: Text(
-          "Sign in",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20),
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.8, // กล่องขนาด 80% ของความกว้างของหน้าจอ
+      height: MediaQuery.of(context).size.height * 0.08, // ความสูงของกล่อง
+      color: darkest_blue, 
+      child: ElevatedButton(
+        onPressed: () {
+          signInUser();
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => welcomePage()),
+          );
+        },
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(darkest_blue), 
         ),
-      ),
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all<OutlinedBorder>(StadiumBorder()),
-        backgroundColor: MaterialStateProperty.all<Color>(
-            Color.fromARGB(255, 111, 202, 205)),
-        foregroundColor: MaterialStateProperty.all<Color>(
-            Color.fromARGB(246, 255, 255, 255)),
-        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-            EdgeInsets.symmetric(vertical: 16)),
+        child: Center(
+          child: Text(
+            "Sign in",
+            style: TextStyle(
+              fontSize: 20, 
+              color: Colors.white, 
+              fontWeight: FontWeight.w500
+            ),
+          ),
+        ),
       ),
     );
   }
+
 }

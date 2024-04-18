@@ -1,70 +1,139 @@
-// TODO Implement this library.
 import 'package:flutter/material.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:phrase2/models/setting.dart';
-
-class SettingTile extends StatefulWidget {
-  final Setting setting;
-
-  const SettingTile({
-    Key? key,
-    required this.setting,
-  }) : super(key: key);
-
-  @override
-  _SettingTileState createState() => _SettingTileState();
-}
-
-class _SettingTileState extends State<SettingTile> {
-  bool isHovered = false;
-
+import 'package:phrase2/screens/profile.dart';
+import 'package:phrase2/widgets/avatar_card.dart';
+import 'package:phrase2/widgets/setting_title.dart';
+import 'package:phrase2/utilities/constants.dart';
+import 'package:phrase2/screens/discovery.dart';
+ 
+import 'package:phrase2/screens/detailKhlong.dart';
+import 'package:phrase2/screens/ticket_page.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+ 
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({Key? key}) : super(key: key);
+ 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) {
-        setState(() {
-          isHovered = true;
-        });
-      },
-      onExit: (_) {
-        setState(() {
-          isHovered = false;
-        });
-      },
-      child: GestureDetector(
-        onTap: () {
-          // ใส่การนำทางไปยังหน้าต่าง ๆ ตามต้องการ
+    return Scaffold(
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Color.fromARGB(255, 225, 204, 141),
+        color: Color.fromARGB(255, 88, 139, 138),
+        animationDuration: const Duration(milliseconds: 300),
+        items: <Widget>[
+          Icon(Icons.search, size: 26, color: Colors.white),
+          Icon(Icons.home, size: 26, color: Colors.white),
+          Icon(Icons.person,
+              size: 26, color: Colors.white), // เพิ่มไอคอน 'Profile' ที่นี่
+          Icon(Icons.confirmation_number, size: 26, color: Colors.white),
+        ],
+        onTap: (index) {
+          // ตรวจสอบว่าไอคอนไหนถูกเลือก
+          if (index == 0) {
+            // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนแรก (search)
+          } else if (index == 1) {
+            // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สอง (home)
+          } else if (index == 2) {
+            // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สาม (profile)
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileScreen()),
+            );
+          } else if (index == 3) {
+            // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สี่ (confirmation_number)
+          }
         },
-        child: Row(
-          children: [
-            Container(
-              height: 50,
-              width: 50,
-              margin: const EdgeInsets.only(bottom: 15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: isHovered ? Colors.blueGrey.shade200 : null,
-              ),
-              child: Icon(
-                widget.setting.icon as IconData?,
-                color: isHovered ? Colors.blueGrey.shade800 : Colors.blueGrey,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 220, 187, 125), // สีแรก (ข้างบน)
+              Color.fromRGBO(204, 235, 240, 1), // สีที่สอง (ข้างล่าง)
+            ],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 20),
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const AvatarCard(),
+                  const SizedBox(height: 20),
+                  const Divider(),
+                  const SizedBox(height: 10),
+                  Column(
+                    children: List.generate(
+                      settings.length,
+                      (index) => SettingTile(setting: settings[index]),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Divider(),
+                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
+                ],
               ),
             ),
-            const SizedBox(width: 15),
-            Text(
-              widget.setting.title,
-              style: const TextStyle(
-                color: Colors.blueGrey,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const Spacer(),
-            Icon(
-              Icons.arrow_forward_ios,
-              color: Color.fromARGB(255, 103, 101, 101),
-            ),
-          ],
+          ),
         ),
       ),
     );
+  }
+}
+ 
+class ProfileScreen extends StatefulWidget {
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+ 
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profile'),
+      ),
+      body: Center(
+        child: Text('Profile Screen'),
+      ),
+      bottomNavigationBar: BottomBar(onItemTapped: _onItemTapped),
+    );
+  }
+
+  void _onItemTapped(int index) {
+    switch (index) {
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DiscoveryPage()),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Homepage()),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SettingTile(setting: settings[index],)),
+        );
+        break;
+      case 3:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => TicketPage()),
+        );
+        break;
+      default:
+    }
   }
 }

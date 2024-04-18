@@ -12,7 +12,7 @@ class AvatarCard extends StatelessWidget {
       children: [
         ClipOval(
           child: Image.asset(
-            "assets/Female_10.jpg",
+            "assets/images/Female.png",
             width: 65,
             height: 65,
           ),
@@ -23,7 +23,7 @@ class AvatarCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              "Uranus Code",
+              "Jenny Wilson",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.blueGrey,

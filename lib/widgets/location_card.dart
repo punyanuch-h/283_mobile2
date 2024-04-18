@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// for discovery current location
 
 class LocationCard extends StatelessWidget {
   const LocationCard({Key? key}) : super(key: key);

@@ -21,7 +21,7 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("WenderApp"),
+        title: const Text("WanderApp"),
       ),
       body: _widgetOptions[0],
       bottomNavigationBar: BottomNavigationBar(

@@ -8,24 +8,18 @@ class NearbyPlaceModel {
 
 List<NearbyPlaceModel> nearbyPlaces = [
   NearbyPlaceModel(
-    image: "assets/places/place7.jpg",
+    image: "assets/images/cityA.jpg",
   ),
   NearbyPlaceModel(
-    image: "assets/places/place6.jpg",
+    image: "assets/images/cityB.jpg",
   ),
   NearbyPlaceModel(
-    image: "assets/places/place5.jpg",
+    image: "assets/images/cityC.jpg",
   ),
   NearbyPlaceModel(
-    image: "assets/places/place4.jpg",
+    image: "assets/images/cityD.jpg",
   ),
   NearbyPlaceModel(
-    image: "assets/places/place3.jpg",
-  ),
-  NearbyPlaceModel(
-    image: "assets/places/place2.jpg",
-  ),
-  NearbyPlaceModel(
-    image: "assets/places/place1.jpg",
+    image: "assets/images/cityE.jpg",
   ),
 ];
