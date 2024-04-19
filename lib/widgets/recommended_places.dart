@@ -9,7 +9,7 @@ class RecommendedPlaces extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 235,
-      child: ListView.separated(
+      child: ListView.separated( 
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: recommendedPlaces.length, // ใช้ความยาวของฐานข้อมูลเป็นจำนวนรายการ
@@ -34,9 +34,10 @@ class RecommendedPlaces extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         child: Image.asset(
                           place.image, // image
-                          width: double.maxFinite,
+                          // width: double.maxFinite,
+                          width: 100,
                           fit: BoxFit.cover,
-                          height: 150,
+                          height: 140,
                         ),
                       ),
                       const SizedBox(height: 5),

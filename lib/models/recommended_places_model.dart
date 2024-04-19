@@ -16,34 +16,34 @@ class RecommendedPlaceModel {
 
 List<RecommendedPlaceModel> recommendedPlaces = [
   RecommendedPlaceModel(
-    image: "assets/images/reccomendation/bangKlong1.jpg",
+    image: "assets/images/cityA.jpg",
     rating: 4.9,
     location: "Jeeb pao pub",
     text: "Salaya, Phutthamonthon, Nakhon Pathom 73170",
   ),
   RecommendedPlaceModel(
-    image: "assets/images/reccomendation/bangKlong2.jpg",
+    image: "assets/images/cityB.jpg",
     rating: 4.8,
     location: "Khlong Bang Luang",
     text: "Salaya, Phutthamonthon, Nakhon Pathom 73170",
 
   ),
   RecommendedPlaceModel(
-    image: "assets/images/reccomendation/bangKlong3.png",
+    image: "assets/images/cityA.jpg",
     rating: 4.7,
     location: "Jeeb pao pub",
     text: "Salaya, Phutthamonthon, Nakhon Pathom 73170",
 
   ),
   RecommendedPlaceModel(
-    image: "assets/images/reccomendation/beach.jpg",
+    image: "assets/images/cityA.jpg",
     rating: 4.4,
     location: "Khlong Bang Luang",
     text: "Salaya, Phutthamonthon, Nakhon Pathom 73170",
 
   ),
   RecommendedPlaceModel(
-    image: "assets/images/reccomendation/beach1.jpg",
+    image: "assets/images/cityA.jpg",
     rating: 4.4,
     location: "Jeeb pao pub",
     text: "Salaya, Phutthamonthon, Nakhon Pathom 73170",

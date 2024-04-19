@@ -14,7 +14,7 @@ class welcomePage extends StatelessWidget {
             image: AssetImage("assets/images/Homepage.jpg"),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.6),
+              Colors.black.withOpacity(1.0),
               BlendMode.dstATop,
             ),
           ),
