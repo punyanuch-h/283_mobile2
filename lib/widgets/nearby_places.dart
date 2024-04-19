@@ -32,7 +32,7 @@ class NearbyPlaces extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12),
                             child: Image.asset(
                               nearbyPlaces[index].image,
-                              width: 200, // กำหนดความกว้างของรูปภาพ
+                              width: 350, 
                               fit: BoxFit.cover,
                             ),
                           ),

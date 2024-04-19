@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       title: 'Wander',
       debugShowCheckedModeBanner: false,
-      home: DiscoveryPage(),
+      home: DetailsPage(),
     );
   }
 }

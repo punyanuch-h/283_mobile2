@@ -11,7 +11,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 class Homepage extends StatefulWidget {
   Homepage({Key? key}) : super(key: key);
 
-  final User currentUser = FirebaseAuth.instance.currentUser!;
+  // final User currentUser = FirebaseAuth.instance.currentUser!;
 
   void signUserOut() {
     FirebaseAuth.instance.signOut();

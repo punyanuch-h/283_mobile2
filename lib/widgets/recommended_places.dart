@@ -35,9 +35,9 @@ class RecommendedPlaces extends StatelessWidget {
                         child: Image.asset(
                           place.image, // image
                           // width: double.maxFinite,
-                          width: 100,
+                          width: 300,
                           fit: BoxFit.cover,
-                          height: 140,
+                          height: 150,
                         ),
                       ),
                       const SizedBox(height: 5),
