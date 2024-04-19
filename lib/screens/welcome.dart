@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:phrase2/screens/login_page.dart'; // นำเข้าหน้า login_page.dart
+import 'package:phrase2/screens/discovery.dart';
+import 'package:phrase2/screens/homepage.dart'; 
 
 class welcomePage extends StatelessWidget {
   @override
@@ -30,7 +31,7 @@ class welcomePage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Spacer(), // ให้ Spacer ช่วยขยับข้อความลงมา
+            Spacer(), // ขยับข้อความลงมา
             Text(
               "All your vacations destination ,\nare here. enjoy your day!",
               textAlign: TextAlign.center,
@@ -44,10 +45,10 @@ class welcomePage extends StatelessWidget {
             SizedBox(height: 80),
             InkWell(
               onTap: () {
-                // เมื่อคลิกปุ่ม "Get Started" ให้เชื่อมไปยังหน้า login_page.dart
+                // ต้องแก้เป็น homapage
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  MaterialPageRoute(builder: (context) => DiscoveryPage()),
                 );
               },
               child: Container(

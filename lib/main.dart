@@ -10,7 +10,7 @@ import 'package:phrase2/screens/detailKhlong.dart';
 import 'package:phrase2/screens/homepage3.dart';
 import 'package:phrase2/screens/ticket_page.dart';
 import 'package:phrase2/screens/welcome.dart'; // DetailsPage
-import 'package:phrase2/screens/profile.dart'; //Profilepage
+import 'package:phrase2/widgets/setting_title.dart'; //Profilepage
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,11 +23,10 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Wander',
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
     );

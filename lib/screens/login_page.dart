@@ -221,11 +221,11 @@ class _LoginPageState extends State<LoginPage> {
       color: darkest_blue, 
       child: ElevatedButton(
         onPressed: () {
-          signInUser();
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => welcomePage()),
           );
+          signInUser();
         },
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(darkest_blue), 

@@ -4,7 +4,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:phrase2/models/setting.dart';
 import 'package:phrase2/screens/discovery.dart';
-import 'package:phrase2/screens/profile.dart';
+import 'package:phrase2/widgets/setting_title.dart';
 import 'package:phrase2/screens/ticket_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 

@@ -1,12 +1,16 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:phrase2/utilities/colors.dart';
+import 'package:phrase2/screens/homepage.dart';
+import 'package:phrase2/screens/ticket_page.dart';
 import 'package:phrase2/widgets/custom_icon_button.dart';
 import 'package:phrase2/widgets/location_card.dart';
 import 'package:phrase2/widgets/nearby_places.dart';
 import 'package:phrase2/widgets/recommended_places.dart';
+import 'package:phrase2/screens/proflie.dart';
 import 'package:phrase2/widgets/tourist_places.dart';
+
+import '../widgets/wander_bottom_bar.dart';
 
 class DiscoveryPage extends StatelessWidget {
   const DiscoveryPage({Key? key}) : super(key: key);
@@ -29,7 +33,7 @@ class DiscoveryPage extends StatelessWidget {
         ),
         child: bodyDiscovery(context),
       ),      
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: WanderBottomBar(),
     );
   }
 
@@ -120,35 +124,4 @@ class DiscoveryPage extends StatelessWidget {
   }
 }
 
-class BottomBar extends StatefulWidget {
-  const BottomBar({Key? key}) : super(key: key);
 
-  @override
-  State<BottomBar> createState() => _BottomBarState();
-}
-
-class _BottomBarState extends State<BottomBar> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return CurvedNavigationBar(
-      backgroundColor: Color.fromRGBO(204, 235, 240, 1),
-      color: Color.fromARGB(255, 88, 139, 138),
-      animationDuration: const Duration(milliseconds: 300),
-      items: const <Widget>[
-        Icon(Icons.search, size: 26, color: Colors.white),
-        Icon(Icons.home, size: 26, color: Colors.white),
-        Icon(Icons.person, size: 26, color: Colors.white),
-        Icon(Icons.confirmation_number, size: 26, color: Colors.white),
-      ],
-      onTap: _onItemTapped,
-    );
-  }
-}
