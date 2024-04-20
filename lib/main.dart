@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:phrase2/screens/auth_page.dart';
 import 'package:phrase2/screens/login_page.dart';
+import 'package:phrase2/screens/proflie.dart';
 import 'firebase_options.dart';
 import 'package:phrase2/screens/homepage.dart'; // Homepage
 import 'package:phrase2/screens/homepage2.dart'; // Homepage2
@@ -25,10 +26,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       title: 'Wander',
       debugShowCheckedModeBanner: false,
-      home: DetailsPage(),
+      home: HomePage3(),
     );
   }
 }

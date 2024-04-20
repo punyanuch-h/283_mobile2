@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// for profile page
+import 'package:phrase2/utilities/constants.dart';
 
 class AvatarCard extends StatelessWidget {
   const AvatarCard({
@@ -12,7 +12,7 @@ class AvatarCard extends StatelessWidget {
       children: [
         ClipOval(
           child: Image.asset(
-            "assets/images/Female.png",
+            "assets/images/Female_10.jpg",
             width: 65,
             height: 65,
           ),
@@ -23,7 +23,7 @@ class AvatarCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              "Jenny Wilson",
+              "Uranus Code",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.blueGrey,

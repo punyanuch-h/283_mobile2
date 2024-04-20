@@ -4,6 +4,8 @@ import 'package:latlong2/latlong.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:phrase2/models/setting.dart';
 import 'package:phrase2/screens/discovery.dart';
+import 'package:phrase2/screens/proflie.dart';
+
 import 'package:phrase2/widgets/setting_title.dart';
 import 'package:phrase2/screens/ticket_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -105,17 +107,15 @@ class _HomepageState extends State<Homepage> {
         );
         break;
       case 1:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Homepage()),
-        );
+        // Don't navigate to Homepage again
         break;
-      case 2:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => SettingTile(setting: settings[index],)),
-        );
-        break;
+case 2:
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => ProfilePage()),
+  );
+  break;
+
       case 3:
         Navigator.push(
           context,

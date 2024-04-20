@@ -4,19 +4,53 @@ import 'package:phrase2/models/setting.dart';
 import 'package:phrase2/widgets/avatar_card.dart';
 import 'package:phrase2/widgets/setting_title.dart';
 import 'package:phrase2/utilities/constants.dart';
+
+
 import 'package:phrase2/screens/discovery.dart';
 import 'package:phrase2/screens/ticket_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:phrase2/widgets/wander_bottom_bar.dart';
  
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
- 
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: WanderBottomBar(),
-      body: Container(
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Color.fromARGB(255, 225, 204, 141),
+        color: Color.fromARGB(255, 88, 139, 138),
+        animationDuration: const Duration(milliseconds: 300),
+        items: <Widget>[
+          Icon(Icons.search, size: 26, color: Colors.white),
+          Icon(Icons.home, size: 26, color: Colors.white),
+          Icon(Icons.person,
+              size: 26, color: Colors.white), // เพิ่มไอคอน 'Profile' ที่นี่
+          Icon(Icons.confirmation_number, size: 26, color: Colors.white),
+        ],
+         onTap: (index) {
+        // ตรวจสอบว่าไอคอนไหนถูกเลือก
+        if (index == 0) {
+          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนแรก (search)
+        } else if (index == 1) {
+          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สอง (home)
+        } else if (index == 2) {
+          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สาม (profile)
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ProfilePage()),
+          );
+        } else if (index == 3) {
+          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สี่ (confirmation_number)
+        }
+      },
+      ),
+body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -48,43 +82,13 @@ class ProfilePage extends StatelessWidget {
                   const SizedBox(height: 10),
                   const Divider(),
                   const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),
           ),
         ),
       ),
-    );
-  }
-
-  CurvedNavigationBar barthatNOTlink(BuildContext context) {
-    return CurvedNavigationBar(
-      backgroundColor: Color.fromARGB(255, 225, 204, 141),
-      color: Color.fromARGB(255, 88, 139, 138),
-      animationDuration: const Duration(milliseconds: 300),
-      items: <Widget>[
-        Icon(Icons.search, size: 26, color: Colors.white),
-        Icon(Icons.home, size: 26, color: Colors.white),
-        Icon(Icons.person,
-            size: 26, color: Colors.white), // เพิ่มไอคอน 'Profile' ที่นี่
-        Icon(Icons.confirmation_number, size: 26, color: Colors.white),
-      ],
-      onTap: (index) {
-        // ตรวจสอบว่าไอคอนไหนถูกเลือก
-        if (index == 0) {
-          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนแรก (search)
-        } else if (index == 1) {
-          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สอง (home)
-        } else if (index == 2) {
-          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สาม (profile)
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ProfilePage()),
-          );
-        } else if (index == 3) {
-          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สี่ (confirmation_number)
-        }
-      },
     );
   }
 }
