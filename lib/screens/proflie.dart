@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:phrase2/models/setting.dart';
+import 'package:phrase2/screens/homepage.dart';
 import 'package:phrase2/widgets/avatar_card.dart';
 import 'package:phrase2/widgets/setting_title.dart';
 import 'package:phrase2/utilities/constants.dart';
-
+import 'package:phrase2/screens/ticket_page.dart';
 
 import 'package:phrase2/screens/discovery.dart';
-import 'package:phrase2/screens/ticket_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:phrase2/widgets/wander_bottom_bar.dart';
- 
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -29,35 +29,36 @@ class _ProfilePageState extends State<ProfilePage> {
         items: <Widget>[
           Icon(Icons.search, size: 26, color: Colors.white),
           Icon(Icons.home, size: 26, color: Colors.white),
-          Icon(Icons.person,
-              size: 26, color: Colors.white), // เพิ่มไอคอน 'Profile' ที่นี่
+          Icon(Icons.person, size: 26, color: Colors.white),
           Icon(Icons.confirmation_number, size: 26, color: Colors.white),
         ],
-         onTap: (index) {
-        // ตรวจสอบว่าไอคอนไหนถูกเลือก
-        if (index == 0) {
-          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนแรก (search)
-        } else if (index == 1) {
-          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สอง (home)
-        } else if (index == 2) {
-          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สาม (profile)
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ProfilePage()),
-          );
-        } else if (index == 3) {
-          // กำหนดการแสดงหน้าที่เกี่ยวข้องกับไอคอนที่สี่ (confirmation_number)
-        }
-      },
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => DiscoveryPage()),
+            );
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Homepage()),
+            );
+          } else if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TicketPage()),
+            );
+          }
+        },
       ),
-body: Container(
+      body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color.fromARGB(255, 220, 187, 125), // สีแรก (ข้างบน)
-              Color.fromRGBO(204, 235, 240, 1), // สีที่สอง (ข้างล่าง)
+              Color.fromARGB(255, 220, 187, 125), // Color on top
+              Color.fromRGBO(204, 235, 240, 1), // Color at the bottom
             ],
           ),
         ),

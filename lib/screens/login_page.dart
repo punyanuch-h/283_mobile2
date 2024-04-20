@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:phrase2/screens/welcome.dart';
+import 'package:phrase2/screens/welcome.dart'; // นำเข้าหน้า WelcomePage
 import 'package:phrase2/utilities/colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -26,23 +26,38 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
 
-    // Try sign in
     try {
-      
+      // Sign in with email and password
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email');
-      } else if(e.code == 'wrong-password') {
-        print('Wrong password provided for that user');
-      }
-    }
 
-    // Pop the loading circle
-    Navigator.pop(context);
+      // If sign-in successful, navigate to welcome page
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => welcomePage()), // แก้ welcomePage() เป็น WelcomePage()
+      );
+    } on FirebaseAuthException catch (e) {
+      // Handle sign-in errors
+      String errorMessage = 'An error occurred';
+      if (e.code == 'user-not-found') {
+        errorMessage = 'No user found for that email';
+      } else if (e.code == 'wrong-password') {
+        errorMessage = 'Wrong password provided for that user';
+      }
+      print(errorMessage); // Print error message for debugging
+
+      // Show a snackbar with the error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(errorMessage),
+        ),
+      );
+    } finally {
+      // Pop the loading circle
+      Navigator.pop(context);
+    }
   }
 
   @override
@@ -107,19 +122,19 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    signInUser();
+                    signInUser(); // เรียกใช้ฟังก์ชัน signInUser() เมื่อกดปุ่ม Sign in
                   },
                   child: Text(
-                    "Sign In", 
+                    "Sign In",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w400,
                       color: Colors.black,
                       decoration: TextDecoration.underline, // เพิ่มเส้น
-                      decorationColor: darkest_blue, 
+                      decorationColor: darkest_blue,
                       decorationThickness: 6,
                     ),
-                    ),
+                  ),
                   style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.transparent),
@@ -128,9 +143,15 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(width: 50),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Navigate to Sign Up Page
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => SignUpPage()),
+                    // );
+                  },
                   child: Text(
-                    "Sign Up",
+                    "Sign Up", // Change button text to "Sign Up"
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w400,
@@ -216,32 +237,58 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _loginBtn() {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.8, // กล่องขนาด 80% ของความกว้างของหน้าจอ
-      height: MediaQuery.of(context).size.height * 0.08, // ความสูงของกล่อง
-      color: darkest_blue, 
+      width: MediaQuery.of(context).size.width * 0.8,
+      height: MediaQuery.of(context).size.height * 0.08,
+      color: darkest_blue,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => welcomePage()),
-          );
-          signInUser();
+          // Check if email and password are not empty
+          if (emailController.text.isNotEmpty &&
+              passwordController.text.isNotEmpty) {
+            signInUser(); // เรียกใช้ signInUser() สำหรับการล็อคอิน
+
+            // Navigate ไปยังหน้า WelcomePage เมื่อล็อกอินเสร็จสิ้น
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => welcomePage()),
+            );
+          } else {
+            // Show a snackbar if email or password is empty
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Please enter email and password.'),
+              ),
+            );
+          }
         },
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(darkest_blue), 
+          backgroundColor: MaterialStateProperty.all<Color>(darkest_blue),
         ),
         child: Center(
           child: Text(
             "Sign in",
             style: TextStyle(
-              fontSize: 20, 
-              color: Colors.white, 
-              fontWeight: FontWeight.w500
-            ),
+                fontSize: 20, color: Colors.white, fontWeight: FontWeight.w500),
           ),
         ),
       ),
     );
   }
+}
 
+class SignUpPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Sign Up'),
+      ),
+      body: Center(
+        child: Text(
+          'Sign Up Page',
+          style: TextStyle(fontSize: 24),
+        ),
+      ),
+    );
+  }
 }

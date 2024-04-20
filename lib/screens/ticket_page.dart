@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:phrase2/screens/discovery.dart';
+import 'package:phrase2/screens/homepage.dart';
 import 'package:phrase2/widgets/setting_title.dart';
 import 'package:phrase2/screens/detailKhlong.dart';
 import 'package:phrase2/screens/ticket_page.dart';
+import 'package:phrase2/screens/bottom_bar.dart';
+// import 'package:phrase2/screens/profile.dart';
 
 import 'bottom_bar.dart';
-
 
 class TicketPage extends StatelessWidget {
   const TicketPage({Key? key}) : super(key: key);
@@ -25,6 +27,7 @@ class TicketPage extends StatelessWidget {
             end: Alignment.bottomCenter,
           ),
         ),
+
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Column(
@@ -106,55 +109,55 @@ class TicketPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-            Row(
-  children: [
-    Container(
-      width: 50,
-      height: 50, // เพิ่มความสูงของ container เพื่อให้เป็นสี่เหลี่ยมจตุรัส
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: LinearGradient(
-          colors: const [
-            Color.fromARGB(255, 244, 242, 240),
-            Color.fromRGBO(223, 236, 238, 1),
-          ],
-        ),
-      ),
-      child: Center(
-        child: Icon(
-          Icons.toys,
-          color: Color.fromARGB(255, 14, 155, 173),
-          size: 35,
-        ),
-      ),
-    ),
-    SizedBox(width: 10),
-    Expanded(
-      child: Container(
-        padding: EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: const [
-              Color.fromARGB(255, 220, 187, 125),
-              Color.fromRGBO(204, 235, 240, 1),
-            ],
-          ),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Text(
-          "You have 2,000 km this month",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 15,
-            color: Color.fromARGB(255, 102, 100, 100),
-          ),
-        ),
-      ),
-    ),
-  ],
-),
-
+              Row(
+                children: [
+                  Container(
+                    width: 50,
+                    height:
+                        50, // เพิ่มความสูงของ container เพื่อให้เป็นสี่เหลี่ยมจตุรัส
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: LinearGradient(
+                        colors: const [
+                          Color.fromARGB(255, 244, 242, 240),
+                          Color.fromRGBO(223, 236, 238, 1),
+                        ],
+                      ),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        Icons.toys,
+                        color: Color.fromARGB(255, 14, 155, 173),
+                        size: 35,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: const [
+                            Color.fromARGB(255, 220, 187, 125),
+                            Color.fromRGBO(204, 235, 240, 1),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        "You have 2,000 km this month",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          color: Color.fromARGB(255, 102, 100, 100),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
 
               SizedBox(height: 20),
               Column(
@@ -374,6 +377,58 @@ class TicketPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomBar(),
+    );
+  }
+}
+
+class BottomBar extends StatefulWidget {
+  const BottomBar({Key? key}) : super(key: key);
+
+  @override
+  State<BottomBar> createState() => _BottomBarState();
+}
+
+class _BottomBarState extends State<BottomBar> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      // เช็ค index เพื่อเปิดหน้าที่ต้องการเมื่อไอคอนถูกแตะ
+      if (index == 0) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DiscoveryPage()),
+        );
+      } else if (index == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Homepage()),
+        );
+      } else if (index == 3) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => TicketPage()),
+        );
+      }
+      Navigator.pop(context); // เรียกใช้ Navigator.pop เพื่อกลับไปยังหน้าที่อยู่หลังจากหน้า TicketPage
+
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CurvedNavigationBar(
+      backgroundColor: Color.fromRGBO(204, 235, 240, 1),
+      color: Color.fromARGB(255, 88, 139, 138),
+      animationDuration: const Duration(milliseconds: 300),
+      items: const <Widget>[
+        Icon(Icons.search, size: 26, color: Colors.white),
+        Icon(Icons.home, size: 26, color: Colors.white),
+        Icon(Icons.person, size: 26, color: Colors.white),
+        Icon(Icons.confirmation_number, size: 26, color: Colors.white),
+      ],
+      onTap: _onItemTapped, // เรียกใช้ฟังก์ชัน _onItemTapped เมื่อไอคอนถูกแตะ
     );
   }
 }
