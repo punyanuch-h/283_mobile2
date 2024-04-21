@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:phrase2/screens/discovery.dart';
 import 'package:phrase2/screens/homepage.dart';
+import 'package:phrase2/screens/homepage3.dart';
 import 'package:phrase2/widgets/setting_title.dart';
 import 'package:phrase2/screens/detailKhlong.dart';
 import 'package:phrase2/screens/ticket_page.dart';
@@ -403,7 +404,7 @@ class _BottomBarState extends State<BottomBar> {
       } else if (index == 1) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Homepage()),
+          MaterialPageRoute(builder: (context) => HomePage3()),
         );
       } else if (index == 3) {
         Navigator.push(

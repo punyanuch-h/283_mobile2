@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:phrase2/screens/detailKhlong.dart';
 import 'package:phrase2/utilities/colors.dart';
+import 'package:phrase2/widgets/detail_place.dart';
+import 'package:phrase2/widgets/wander_bottom_bar.dart';
 
 class HomePage3 extends StatefulWidget {
   const HomePage3({super.key});
@@ -34,6 +37,12 @@ class _HomePage3State extends State<HomePage3> {
             target: _center,
             zoom: 11.0,
           ),
+          onTap: (Marker) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailsPage()),
+                );
+              },
           markers: {
             const Marker(
               markerId: MarkerId("Nakhon_Pathom"),
@@ -42,14 +51,10 @@ class _HomePage3State extends State<HomePage3> {
                 title: "Khlong Bang Luang Floating Market",
                 snippet: "Water Market, Nakhon Pathom",
               ),
-              // onTap: () {
-              //   // Handle marker tap here (e.g., show details, navigate)
-              //   print('Marker "Nakhon Pathom" tapped!');
-              // },
             ),
           },
         ),
-        // bottomNavigationBar: ,
+        bottomNavigationBar: WanderBottomBar(),
       ),
     );
   }

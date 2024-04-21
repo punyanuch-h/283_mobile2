@@ -135,7 +135,7 @@ class DiscoveryPage extends StatelessWidget {
 
   AppBar Ahoy(BuildContext context) {
     return AppBar(
-      elevation: 0,
+      // elevation: 0,
       backgroundColor: theme_yellow,
       foregroundColor: theme_yellow,
       title: Container(
@@ -144,13 +144,13 @@ class DiscoveryPage extends StatelessWidget {
             RichText(
               text: TextSpan(
                 text: "Ahoy! Captain ",
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                style: TextStyle(color: Colors.black, fontSize: 12),
                 children: [
                   TextSpan(
                     text: "Jenny Wilson",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: 16,
                     ),
                   ),
                 ],

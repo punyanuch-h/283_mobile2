@@ -121,7 +121,7 @@ class KhlongBangLuang extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           radius: 25,
-                          backgroundImage: AssetImage('assets/images/profile1.jpg'),
+                          backgroundImage: AssetImage('assets/images/Female.png'),
                         ),
                         SizedBox(width: 15),
                         Column(

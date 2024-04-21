@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:phrase2/models/recommended_places_model.dart'; // เรียกใช้ไฟล์ฐานข้อมูล
+import 'package:phrase2/models/recommended_places_model.dart'; 
 
 class RecommendedPlaces extends StatelessWidget {
   const RecommendedPlaces({Key? key}) : super(key: key);
@@ -12,9 +12,9 @@ class RecommendedPlaces extends StatelessWidget {
       child: ListView.separated( 
         physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
-        itemCount: recommendedPlaces.length, // ใช้ความยาวของฐานข้อมูลเป็นจำนวนรายการ
+        itemCount: recommendedPlaces.length, 
         itemBuilder: (context, index) {
-          final place = recommendedPlaces[index]; // เรียกใช้ข้อมูลแต่ละสถานที่จาก index
+          final place = recommendedPlaces[index]; // เรียกใช้ข้อมูลจาก index
           return SizedBox(
             width: 320,
             child: Card(
