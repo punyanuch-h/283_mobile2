@@ -36,12 +36,6 @@ class _HomePage3State extends State<HomePage> {
             target: _center,
             zoom: 11.0,
           ),
-          onTap: (Marker) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DetailsPage()),
-                );
-              },
           markers: {
             const Marker(
               markerId: MarkerId("Nakhon_Pathom"),
@@ -52,6 +46,12 @@ class _HomePage3State extends State<HomePage> {
               ),
             ),
           },
+          onTap: (Marker) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailsPage()),
+                );
+              },
         ),
         bottomNavigationBar: WanderBottomBar(),
       ),

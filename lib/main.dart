@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:phrase2/screens/details.dart';
+import 'package:phrase2/screens/homepage.dart';
 import 'package:phrase2/screens/login_page.dart';
 import 'firebase_options.dart';
 
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Wander',
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: DetailsPage(),
     );
   }
 }
