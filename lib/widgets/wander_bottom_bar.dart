@@ -1,7 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:phrase2/screens/discovery.dart';
-import 'package:phrase2/screens/homepage3.dart';
+import 'package:phrase2/screens/homepage.dart';
 import 'package:phrase2/screens/proflie.dart';
 import 'package:phrase2/screens/ticket_page.dart';
 
@@ -28,7 +28,7 @@ class _WanderBottomBarState extends State<WanderBottomBar> {
         case 1:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HomePage3()),
+            MaterialPageRoute(builder: (context) => HomePage()),
           );
           break;
         case 2:

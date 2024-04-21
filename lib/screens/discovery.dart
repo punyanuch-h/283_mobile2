@@ -1,18 +1,12 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:phrase2/screens/homepage.dart';
-import 'package:phrase2/screens/ticket_page.dart';
 import 'package:phrase2/utilities/colors.dart';
 import 'package:phrase2/widgets/custom_icon_button.dart';
 import 'package:phrase2/widgets/location_card.dart';
 import 'package:phrase2/widgets/nearby_places.dart';
 import 'package:phrase2/widgets/recommended_places.dart';
-import 'package:phrase2/screens/proflie.dart';
 import 'package:phrase2/widgets/tourist_places.dart';
-
-import '../widgets/wander_bottom_bar.dart';
-import 'package:flutter/material.dart';
+import 'package:phrase2/widgets/wander_bottom_bar.dart';
 
 class DiscoveryPage extends StatelessWidget {
   const DiscoveryPage({Key? key}) : super(key: key);

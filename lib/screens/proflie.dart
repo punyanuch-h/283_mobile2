@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:phrase2/models/setting.dart';
-import 'package:phrase2/screens/homepage3.dart';
+import 'package:phrase2/screens/homepage.dart';
 import 'package:phrase2/utilities/colors.dart';
 import 'package:phrase2/widgets/avatar_card.dart';
 import 'package:phrase2/widgets/setting_title.dart';
-import 'package:phrase2/utilities/constants.dart';
 import 'package:phrase2/screens/ticket_page.dart';
-
 import 'package:phrase2/screens/discovery.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:phrase2/widgets/wander_bottom_bar.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -42,7 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
           } else if (index == 1) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HomePage3()),
+              MaterialPageRoute(builder: (context) => HomePage()),
             );
           } else if (index == 3) {
             Navigator.push(

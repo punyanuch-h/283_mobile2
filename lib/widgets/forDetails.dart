@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:phrase2/screens/review.dart';
+import 'package:phrase2/screens/quicklyReviews.dart';
 import 'package:phrase2/utilities/colors.dart';
 
 class DetailAppbar extends StatelessWidget {

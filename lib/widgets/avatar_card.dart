@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:phrase2/utilities/constants.dart';
 
 class AvatarCard extends StatelessWidget {
   const AvatarCard({

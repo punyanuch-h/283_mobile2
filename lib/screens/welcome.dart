@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:phrase2/screens/discovery.dart';
 import 'package:phrase2/screens/homepage.dart';
-import 'package:phrase2/screens/homepage3.dart'; 
 
 class welcomePage extends StatelessWidget {
   @override
@@ -49,7 +47,7 @@ class welcomePage extends StatelessWidget {
                 // ต้องแก้เป็น homapage
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HomePage3()),
+                  MaterialPageRoute(builder: (context) => HomePage()),
                 );
               },
               child: Container(

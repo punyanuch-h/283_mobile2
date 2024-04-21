@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:phrase2/models/nearby_places_model.dart';
-import 'package:phrase2/widgets/distance.dart';
 
 class NearbyPlaces extends StatelessWidget {
   const NearbyPlaces({Key? key}) : super(key: key);

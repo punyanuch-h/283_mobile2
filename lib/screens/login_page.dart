@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:phrase2/screens/welcome.dart'; // นำเข้าหน้า WelcomePage
+import 'package:phrase2/screens/welcome.dart';
 import 'package:phrase2/utilities/colors.dart';
 
 class LoginPage extends StatefulWidget {
