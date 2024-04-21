@@ -46,7 +46,7 @@ class _HomePage3State extends State<HomePage> {
               ),
             ),
           },
-          onTap: (Marker) {
+          onTap: (MarkerId) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => DetailsPage()),

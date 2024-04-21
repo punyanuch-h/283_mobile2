@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:phrase2/screens/details.dart';
 import 'package:phrase2/screens/homepage.dart';
 import 'package:phrase2/screens/login_page.dart';
+import 'package:phrase2/screens/welcome.dart';
 import 'firebase_options.dart';
 
 void main() async {
